@@ -10,9 +10,9 @@ require 'src/Database.php';
 use NB\Database;
 
 /**
- * Instantiate it with your own credentials (dsn, username, password, and options).
+ * Instantiate it with your own credentials (database, username, password, host, port, and PDO options).
  */
-$db = new Database('mysql:host=localhost;dbname=pdo_wrapper;charset=utf8', 'root', '');
+$db = new Database('pdo_wrapper', 'root', '');
 
 /**
  * SELECT
@@ -32,7 +32,7 @@ $alpha3 = 'DCT';
 $numeric_code = 999;
 $capital = 'Dummy Capital';
 $db->run('INSERT INTO `countries` (`name`, `alpha2`, `alpha3`, `numeric_code`, `capital`) VALUES (?, ?, ?, ?, ?)', [$name, $alpha2, $alpha3, $numeric_code, $capital]);
-$last_insert_id = $db->lastInsertId();
+$last_insert_id = $db->pdo->lastInsertId();
 var_dump($last_insert_id); // string(3) "250"
 
 /**

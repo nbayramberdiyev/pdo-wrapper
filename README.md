@@ -28,17 +28,19 @@ Because the `execute` method returns a *boolean*. If only it was returning state
 Besides, this is **not a query builder**. Unlike many PHP programmers who have little experience with SQL, I believe that there is no need for separate methods like `select`, `insert`, `update`, `delete`, etc. to get different query results. All we need is just a simple method that accepts a query and an array of variables to be bound as parameters, and which returns a PDO statement, which makes this function extremely flexible and convenient. Because it can run *any kind of query* supported by PDO being more powerful, briefer and simpler than any number of specialized methods.
 
 ## Requirements
-* PHP 7.0 or newer
-* PDO extension
+* PHP 7.4 or newer
+* PHP PDO extension
+* SQL Server
 
 ## Getting Started
 Simply include `Database.php` to your project. Then instantiate the class with your credentials like this:
 
 ```php
 require 'src/Database.php';
+
 use NB\Database;
 
-$db = new Database('mysql:host=localhost;dbname=<database_name>;charset=utf8', '<username>', '<password>');
+$db = new Database('<DATABASE>', '<USERNAME>', '<PASSWORD>', '127.0.0.1', 3306, []);
 ```
 
 ## Usage
