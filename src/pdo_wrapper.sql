@@ -7,28 +7,28 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 
 --
--- Table structure for table `country`
+-- Table structure for table `countries`
 --
 
-DROP TABLE IF EXISTS `country`;
-CREATE TABLE IF NOT EXISTS `country` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `alpha2` char(2) COLLATE utf8_unicode_ci NOT NULL,
-  `alpha3` char(3) COLLATE utf8_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `countries`;
+CREATE TABLE IF NOT EXISTS `countries` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alpha2` char(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alpha3` char(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   `numeric_code` smallint(3) NOT NULL,
-  `capital` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `capital` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `alpha2` (`alpha2`),
   UNIQUE KEY `alpha3` (`alpha3`),
   UNIQUE KEY `numeric_code` (`numeric_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=250 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `country`
+-- Dumping data for table `countries`
 --
 
-INSERT INTO `country` (`id`, `name`, `alpha2`, `alpha3`, `numeric_code`, `capital`) VALUES
+INSERT INTO `countries` (`id`, `name`, `alpha2`, `alpha3`, `numeric_code`, `capital`) VALUES
 (1, 'Afghanistan', 'AF', 'AFG', 4, 'Kabul'),
 (2, 'Åland Islands', 'AX', 'ALA', 248, 'Mariehamn'),
 (3, 'Albania', 'AL', 'ALB', 8, 'Tirana'),
