@@ -11,11 +11,11 @@ $data = $stmt->fetch();
 ```
 
 In short, we need to run every single query in three steps:
-1. Prepare a statement for execution ([`PDO::prepare`](https://www.php.net/manual/en/pdo.prepare.php))
+1. Prepare a statement for execution ([`PDO::prepare`](https://www.php.net/manual/en/pdo.prepare.php)).
 2. Execute a prepared statement ([`PDOStatement::execute`](https://www.php.net/manual/en/pdostatement.execute.php)).
 3. Fetch the result ([`PDOStatement::fetch`](https://www.php.net/manual/en/pdostatement.fetch.php), [`PDOStatement::fetchAll
 `](https://www.php.net/manual/en/pdostatement.fetchall.php), [`PDOStatement::fetchColumn
-`](https://www.php.net/manual/en/pdostatement.fetchcolumn.php), etc.)
+`](https://www.php.net/manual/en/pdostatement.fetchcolumn.php), etc.).
 
 As a result, we end up repeating the same routine again and again. So, why not use neat method chaining like this and make it one line:
 
@@ -47,8 +47,8 @@ Here are some common usage examples for data manipulation.
 ### Select
 ```php
 $id = 232;
-$counrty = $db->run('SELECT * FROM `country` WHERE `id` = ?', [$id])->fetch();
-$counrties = $db->run('SELECT * FROM `country`')->fetchAll();
+$counrty = $db->run('SELECT * FROM `countries` WHERE `id` = ?', [$id])->fetch();
+$counrties = $db->run('SELECT * FROM `countries`')->fetchAll();
 ```
 
 ### Insert
@@ -58,7 +58,7 @@ $alpha2 = 'DC';
 $alpha3 = 'DCT';
 $numeric_code = 999;
 $capital = 'Dummy Capital';
-$db->run('INSERT INTO `country` (`name`, `alpha2`, `alpha3`, `numeric_code`, `capital`) VALUES (?, ?, ?, ?, ?)', [
+$db->run('INSERT INTO `countries` (`name`, `alpha2`, `alpha3`, `numeric_code`, `capital`) VALUES (?, ?, ?, ?, ?)', [
     $name, $alpha2, $alpha3, $numeric_code, $capital
 ]);
 ```
@@ -68,11 +68,11 @@ $db->run('INSERT INTO `country` (`name`, `alpha2`, `alpha3`, `numeric_code`, `ca
 $name = 'Example Country';
 $capital = 'Example Capital';
 $id = 250;
-$db->run('UPDATE `country` SET `name` = ?, `capital` = ? WHERE `id` = ?', [$name, $capital, $id]);
+$db->run('UPDATE `countries` SET `name` = ?, `capital` = ? WHERE `id` = ?', [$name, $capital, $id]);
 ```
 
 ### Delete
 ```php
 $id = 250;
-$db->run('DELETE FROM `country` WHERE `id` = ?', [$id]);
+$db->run('DELETE FROM `countries` WHERE `id` = ?', [$id]);
 ```
